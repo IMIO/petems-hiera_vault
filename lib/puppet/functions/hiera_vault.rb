@@ -17,8 +17,8 @@
 # Note that we don't need synchronization primitives in Cache because we always
 # hold hiera_vault_mutex when accessing the cache.
 class Cache
-  CacheKey = Struct.new(:key, :options)
-  CacheValue = Struct.new(:value, :until)
+  CacheKey ||= Struct.new(:key, :options)
+  CacheValue ||= Struct.new(:value, :until)
 
   def initialize
     @caches = Hash.new {|hash, key| hash[key] = {} }
